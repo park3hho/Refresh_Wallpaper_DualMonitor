@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  nodeapp:
+    build: .
+    container_name: node-wallpaper
+    volumes:
+      - .:/app               # 로컬 코드 → 컨테이너 실시간 반영
+      - /app/node_modules  # node_modules는 컨테이너 내부 유지
+
+    ports:
+      - "3000:3000"          # 필요 시 포트 매핑
+    command: node src/index.js
